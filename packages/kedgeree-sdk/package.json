@@ -1,0 +1,23 @@
+{
+  "name": "@marinade.finance/kedgeree-sdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@project-serum/anchor": "0.24",
+    "@saberhq/anchor-contrib": "^1.14.6",
+    "@saberhq/solana-contrib": "^1.14.6",
+    "@solana/web3.js": "^1.62.0",
+    "bn.js": "^5.2.1"
+  },
+  "peerDependencies": {
+    "@project-serum/anchor": "0.24",
+    "@saberhq/anchor-contrib": "^1.14.6",
+    "@saberhq/solana-contrib": "^1.14.6",
+    "@solana/web3.js": "^1.62.0",
+    "bn.js": "^5.2.1"
+  }
+}
