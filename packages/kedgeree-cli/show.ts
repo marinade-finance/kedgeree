@@ -13,6 +13,10 @@ export function installShow(program: Command) {
       const address = await key;
       console.log(`Key ${address.toBase58()} is`);
       const keyInfo = await sdk.loadKeyInfo(address);
+      if (!keyInfo) {
+        console.log('No info');
+        return;
+      }
       if (keyInfo.base.equals(SystemProgram.programId)) {
         console.log(
           `PDA prog=${keyInfo.owner.toBase58()} seeds=${Buffer.from(

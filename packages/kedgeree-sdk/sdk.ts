@@ -60,8 +60,10 @@ export class KedgereeSDK {
     return address;
   }
 
-  async loadKeyInfo(key: PublicKey): Promise<KeyInfoData> {
-    return this.program.account.keyInfo.fetch(await this.keyInfoAddress(key));
+  async loadKeyInfo(key: PublicKey): Promise<KeyInfoData | null> {
+    return this.program.account.keyInfo.fetchNullable(
+      await this.keyInfoAddress(key)
+    );
   }
 
   async createPDAInfo({
