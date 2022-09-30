@@ -28,9 +28,10 @@ describe('Seeded account info writer', () => {
     await expect(tx.confirm().then(r => r.signature)).resolves.toBeTruthy();
     await expect(sdk.loadKeyInfo(key)).resolves.toBeTruthy();
     const keyInfo = await sdk.loadKeyInfo(key);
-    expect(keyInfo.base.toBase58()).toBe(base.toBase58());
-    expect(keyInfo.key.toBase58()).toBe(key.toBase58());
-    expect(keyInfo.owner.toBase58()).toBe(owner.toBase58());
-    expect(Array.from(keyInfo.seeds)).toEqual(Array.from(encode(seeds)));
+    expect(keyInfo).toBeTruthy();
+    expect(keyInfo!.base.toBase58()).toBe(base.toBase58());
+    expect(keyInfo!.key.toBase58()).toBe(key.toBase58());
+    expect(keyInfo!.owner.toBase58()).toBe(owner.toBase58());
+    expect(Array.from(keyInfo!.seeds)).toEqual(Array.from(encode(seeds)));
   });
 });

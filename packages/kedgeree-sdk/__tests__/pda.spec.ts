@@ -25,10 +25,11 @@ describe('PDA info writer', () => {
     await expect(tx.confirm().then(r => r.signature)).resolves.toBeTruthy();
     await expect(sdk.loadKeyInfo(key)).resolves.toBeTruthy();
     const keyInfo = await sdk.loadKeyInfo(key);
-    expect(keyInfo.base.toBase58()).toBe(SystemProgram.programId.toBase58());
-    expect(keyInfo.key.toBase58()).toBe(key.toBase58());
-    expect(keyInfo.owner.toBase58()).toBe(owner.toBase58());
-    expect(Array.from(keyInfo.seeds)).toEqual([0, 22, 46, 1, 255]);
+    expect(keyInfo).toBeTruthy();
+    expect(keyInfo!.base.toBase58()).toBe(SystemProgram.programId.toBase58());
+    expect(keyInfo!.key.toBase58()).toBe(key.toBase58());
+    expect(keyInfo!.owner.toBase58()).toBe(owner.toBase58());
+    expect(Array.from(keyInfo!.seeds)).toEqual([0, 22, 46, 1, 255]);
   });
 
   it('Creates key info for PDA with long seed', async () => {
@@ -50,9 +51,10 @@ describe('PDA info writer', () => {
     await expect(tx.confirm().then(r => r.signature)).resolves.toBeTruthy();
     await expect(sdk.loadKeyInfo(key)).resolves.toBeTruthy();
     const keyInfo = await sdk.loadKeyInfo(key);
-    expect(keyInfo.base.toBase58()).toBe(SystemProgram.programId.toBase58());
-    expect(keyInfo.key.toBase58()).toBe(key.toBase58());
-    expect(keyInfo.owner.toBase58()).toBe(owner.toBase58());
-    expect(Array.from(keyInfo.seeds)).toEqual(expectedSeeds);
+    expect(keyInfo).toBeTruthy();
+    expect(keyInfo!.base.toBase58()).toBe(SystemProgram.programId.toBase58());
+    expect(keyInfo!.key.toBase58()).toBe(key.toBase58());
+    expect(keyInfo!.owner.toBase58()).toBe(owner.toBase58());
+    expect(Array.from(keyInfo!.seeds)).toEqual(expectedSeeds);
   });
 });
