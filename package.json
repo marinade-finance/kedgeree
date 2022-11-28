@@ -6,14 +6,12 @@
     "select-anchor-version": "avm use 0.25.0",
     "anchor-build": "pnpm select-anchor-version && anchor build",
     "copy-generated": "copyfiles target/types/*.ts packages/kedgeree-sdk/generated",
-    "compile": "pnpm anchor-build && pnpm copy-generated && tsc --project tsconfig.build.json",
+    "build": "pnpm anchor-build && pnpm copy-generated && tsc --project tsconfig.build.json",
     "_test": "jest --detectOpenHandles --coverage",
     "test": "pnpm select-anchor-version && BROWSER= anchor test",
     "cli": "ts-node ./packages/kedgeree-cli/index.ts",
-    "fix": "gts fix"
-  },
-  "dependencies": {
-    "@project-serum/anchor": "^0.24.2"
+    "fix": "gts fix",
+    "publish-sdk": "pnpm publish build/packages/kedgeree-sdk/"
   },
   "devDependencies": {
     "@types/bn.js": "^5.1.0",
